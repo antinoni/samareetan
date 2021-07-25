@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Button, TextInput } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 import firebase from "firebase";
 
 export default class NRegister extends Component {

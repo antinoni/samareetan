@@ -11,6 +11,7 @@ import ILoginScreen from "./auth/individual/ILogin";
 import NLandingScreen from "./auth/nonprofit/NLanding";
 import NRegisterScreen from "./auth/nonprofit/NRegister";
 import NLoginScreen from "./auth/nonprofit/NLogin";
+import DashboardScreen from "./individual/Dashboard";
 
 const Stack = createStackNavigator();
 
@@ -52,6 +53,11 @@ export default class Navigation extends Component {
           <Stack.Screen
             name="NRegister"
             component={NRegisterScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Dashboard"
+            component={DashboardScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

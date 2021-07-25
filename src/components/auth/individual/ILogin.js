@@ -21,7 +21,7 @@ export default class ILogin extends Component {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log(result);
+        console.log("logged in successfully.");
       })
       .catch((error) => {
         console.log(error);

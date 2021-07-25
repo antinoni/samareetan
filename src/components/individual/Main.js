@@ -1,19 +1,22 @@
-import firebase from "firebase";
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchUser } from "../redux/actions";
+import { fetchUser } from "../../redux/actions";
 
-export class Feed extends Component {
+import BottomBar from "../BottomBar";
+import TopBar from "../TopBar";
+
+export class Main extends Component {
   componentDidMount() {
-    this.props.fetchUsers;
+    this.props.fetchUser();
   }
   render() {
-    //const { currentUser } = this.props;
+    const { currentUser } = this.props;
     return (
       <View>
-        <Text> THis is some text</Text>
+        <TopBar />
+        <BottomBar />
       </View>
     );
   }
@@ -22,7 +25,8 @@ export class Feed extends Component {
 const mapStateToProps = (store) => ({
   currentUser: store.userState.currentUser,
 });
+
 const mapDispatchProps = (dispatch) =>
   bindActionCreators({ fetchUser }, dispatch);
 
-export default connect(null, mapDispatchProps)(Feed);
+export default connect(mapStateToProps, mapDispatchProps)(Main);

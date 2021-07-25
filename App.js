@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 
 import Navigation from "./src/components/Navigation";
-import FeedScreen from "./src/components/Feed";
+import MainNavigation from "./src/components/MainNavigation";
 
 import firebase from "firebase";
 import { firebaseConfig } from "./config";
@@ -32,6 +32,11 @@ export default class App extends Component {
           loggedIn: false,
           loaded: true,
         });
+      } else {
+        this.setState({
+          loggedIn: true,
+          loaded: true,
+        });
       }
     });
   }
@@ -39,11 +44,12 @@ export default class App extends Component {
     const { loggedIn } = this.state;
     if (!loggedIn) {
       return <Navigation />;
+    } else {
+      return (
+        <Provider store={store}>
+          <MainNavigation />
+        </Provider>
+      );
     }
-    return (
-      <Provider store={store}>
-        <FeedScreen />
-      </Provider>
-    );
   }
 }
