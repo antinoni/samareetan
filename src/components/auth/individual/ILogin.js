@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { View, Button, TextInput } from "react-native";
+import { View, Text, Button, TextInput } from "react-native";
 import firebase from "firebase";
 
-export default class Login extends Component {
+//TODO: check if correct password
+
+export default class ILogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,10 +12,10 @@ export default class Login extends Component {
       password: "",
     };
 
-    this.onSignUp = this.onSignUp.bind(this);
+    this.onSignIn = this.onSignIn.bind(this);
   }
 
-  onSignUp() {
+  onSignIn() {
     const { email, password } = this.state;
     firebase
       .auth()
@@ -25,10 +27,23 @@ export default class Login extends Component {
         console.log(error);
       });
   }
-
   render() {
     return (
       <View style={{ marginTop: 50 }}>
+        <View>
+          <Button
+            title="<"
+            onPress={() => this.props.navigation.navigate("ILanding")}
+          />
+          <Text> Sign In</Text>
+          <Button
+            title="Sign Up"
+            onPress={() => this.props.navigation.navigate("IRegister")}
+          />
+        </View>
+        <Text>Welcome back!</Text>
+        <Text>Sign in to your account to see what's new.</Text>
+
         <TextInput
           placeholder="email"
           onChangeText={(email) => this.setState({ email })}
@@ -39,7 +54,8 @@ export default class Login extends Component {
           onChangeText={(password) => this.setState({ password })}
         />
 
-        <Button title="Log In" onPress={() => this.onSignUp()} />
+        <Button title="Sign In" onPress={() => this.onSignIn()} />
+        <Text>Forgot password? Reset here</Text>
       </View>
     );
   }

@@ -2,7 +2,7 @@ const initialState = {
   currentUser: null,
 };
 
-export const uder = (state = initialState, action) => {
+export const user = (state = initialState, action) => {
   return {
     ...state,
     currentUser: action.currentUser,
