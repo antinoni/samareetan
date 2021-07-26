@@ -21,6 +21,6 @@ export default class Active extends Component {
   };
 
   render() {
-    return <View>this.getActiveTask();</View>;
+    return <View></View>;
   }
 }
